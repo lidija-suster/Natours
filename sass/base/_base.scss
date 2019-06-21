@@ -1,0 +1,28 @@
+/* Added after and before pseudo elements to this rule to prevent any unwanted behavior,
+   because only real elements get behavior from declared properties */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* Added box-sizing: border-box; from here to the body, 
+             and instead of that rule, added here box-sizing: inherit;
+             to 'force' box sizing inheritance to all other elements in html */
+  box-sizing: inherit;
+}
+
+/* Changed global font size from initial 16px (commented out from the body) to 10px,
+         then changed all px units to corresponding rem units 
+         (1rem became 10px - as it looks to the root element's font size) 
+         by dividing pixel units by 10.
+         But in order to get responsive website, it is better practice to have default 
+         font size in percentage. So, 10 divided by 16 gives 62.5% */
+html {
+  /* font-size: 10px; */
+  /* This defines what 1rem is */
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
