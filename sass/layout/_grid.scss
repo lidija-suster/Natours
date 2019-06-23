@@ -1,6 +1,5 @@
 .row {
   max-width: $grid-width;
-  background-color: #eee;
   margin: 0 auto;
 
   // add margin bottom to all row children, except on the last child
@@ -15,7 +14,6 @@
   // * sign means select all classes that CONTAINS "col-"
   // $ sign means select all classes that ENDS with "col-"
   [class^="col-"] {
-    background-color: orangered;
     float: left;
 
     // don't add right margin to the last child of a row
