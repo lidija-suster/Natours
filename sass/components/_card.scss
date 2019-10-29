@@ -1,0 +1,52 @@
+.card {
+  // for perspective property, as bigger the number,
+  // the better is the effect
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  // for absolute positioning to work
+  position: relative;
+  // child has position: absolute and parent looses the height, so we need
+  // to specify the same height as child
+  height: 50rem;
+
+  &__side {
+    color: white;
+    font-size: 2rem;
+
+    height: 50rem;
+    transition: all 0.8s ease;
+    // position: absolute and top/left values are for positioning
+    // the cards to be on top of one another
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    // hides the back part of an element (earlier used to fix the weird animation effect)
+    backface-visibility: hidden;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+    &--front {
+      background-color: $color-white;
+    }
+
+    &--back {
+      // front is normally oriented, and back is 180deg rotated
+      transform: rotateY(180deg);
+
+      &-1 {
+        background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+      }
+    }
+  }
+
+  &:hover &__side--front {
+    // rotate the front side 180deg
+    transform: rotateY(180deg);
+  }
+
+  // it is already flipped 180deg, so it needs to be reset to 0 on hover
+  &:hover &__side--back {
+    transform: rotateY(0);
+  }
+}
