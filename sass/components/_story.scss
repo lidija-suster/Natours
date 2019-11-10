@@ -1,0 +1,44 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  background-color: $color-white;
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $default-font-size;
+  // add non-rectangular shape to the story container
+  transform: skewX(-12deg);
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    // float: left, in order to make the rest of the content float around it
+    float: left;
+    // style for floating circle and content floating around it is shape-outside property
+    // defines how the content floats around the element
+    /* in order for this to work, the element must be floated, 
+       and the element must have defined dimensions (width and height) */
+    // 50% - radius of the circle (50% from the width),
+    // 50% 50% - center of the circle horizontally and vertically
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    // make circle
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    // the best way to add space between the element that is floated is
+    // the transform property, not the margins
+    transform: translateX(-3rem) skewX(12deg);
+  }
+
+  // flexible images for responsive web design always need to have a width or height
+  &__img {
+    // take the full height of the container shape
+    height: 100%;
+  }
+
+  &__text {
+    // skew content inside story container in the opposite direction (shape and text)
+    transform: skewX(12deg);
+  }
+}
