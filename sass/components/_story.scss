@@ -29,16 +29,58 @@
     // the best way to add space between the element that is floated is
     // the transform property, not the margins
     transform: translateX(-3rem) skewX(12deg);
+    // for enabling absolute positioning of caption
+    position: relative;
   }
 
   // flexible images for responsive web design always need to have a width or height
   &__img {
     // take the full height of the container shape
     height: 100%;
+    // move the image slightly to the left (translateX);
+    // zoom in the image (scale), so we can have the zoom out effect on hover
+    transform: translateX(-4rem) scale(1.4);
+    backface-visibility: hidden;
+    transition: all 0.5s;
   }
 
   &__text {
     // skew content inside story container in the opposite direction (shape and text)
     transform: skewX(12deg);
+  }
+
+  &__caption {
+    /* INITIAL STATE */
+    // adding position: relative to story__shape container
+    // because of this
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    // 20% for moving the caption down, so we will have the "moving up" hover effect
+    transform: translate(-50%, 20%);
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.5s;
+    // fix the shaking of the caption
+    backface-visibility: hidden;
+  }
+
+  /* HOVER STATE */
+  &:hover &__caption {
+    opacity: 1;
+    // -50% in Y direction, so caption will move up from initial 20%
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover &__img {
+    // set the scale to 1 (normal), so we can have zoom out effect on hover,
+    // because we add scale 1.4 to initial state
+    transform: translateX(-4rem) scale(1);
+    // new CSS property: filter
+    // for brightness, values under 100% makes the element darker, and above makes them brighter
+    filter: blur(3px) brightness(80%);
   }
 }
