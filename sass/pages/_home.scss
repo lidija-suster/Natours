@@ -24,6 +24,7 @@
 }
 
 .section-stories {
+  // position: relative - because we have bg-video positioned absolute
+  position: relative;
   padding: 15rem 0;
-  background-color: $color-grey-light-1;
 }
