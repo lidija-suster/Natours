@@ -1,0 +1,64 @@
+.form {
+  &__group:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  &__input {
+    font-size: 1.5rem;
+    // automatically inherit font family from the body
+    font-family: inherit;
+    color: inherit;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background-color: rgba($color-white, 0.5);
+    border: none;
+    // to prevent moving the element down for 3px on focus,
+    // we set the transparent border that is not visible on initial state
+    border-bottom: 3px solid transparent;
+    width: 90%;
+    display: block;
+
+    &:focus {
+      outline: none;
+      // for users who are using keyboard to move around the page,
+      // it is not good solution to completely remove the outline,
+      // so it is a good practice to set i.e. some box shadow and border
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+      border-bottom: 3px solid $color-primary;
+    }
+
+    // for invalid focused input element (Chrome feature)
+    &:focus:invalid {
+      border-bottom: 3px solid $color-secondary-dark;
+    }
+
+    // :: represents pseudoelement
+    // for now only works on Safari and Chrome
+    &::-webkit-input-placeholder {
+      color: $color-grey-dark-2;
+    }
+  }
+
+  &__label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: 2rem;
+    margin-top: 1.7rem;
+    display: block;
+    transition: all 0.3s;
+  }
+
+  // placeholder-shown selects any element with an active placeholder;
+  // + sign represents adjacent sibling selector
+  // (input and label are immediate siblings in form__group);
+  // ~ sign works if there are more elements between children (general sibling selector);
+  &__input:placeholder-shown + &__label {
+    // when there is nothing written in the input, label has to be hidden
+    opacity: 0;
+    // need this because with opacity set to 0, the label is still there,
+    // but visibility hidden really removes it;
+    // but still opacity is important because we can't animate the visibility
+    visibility: hidden;
+    transform: translateY(-4rem);
+  }
+}
