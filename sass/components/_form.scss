@@ -99,10 +99,7 @@
       // for centering inside circle;
       // parent does not have to be relatively positioned (like &__radio-button
       // above which is absolute), it is enough for position just to be specified
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      @include center-horizontal-vertical;
       background-color: $color-primary;
       opacity: 0;
       transition: opacity 0.2s;
