@@ -13,6 +13,7 @@
     border-radius: 50%;
     // should be on top of everything
     z-index: 2000;
+    box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
   }
 
   // element that spans across the whole page on button click
@@ -28,19 +29,26 @@
     // and goes from there in all directions outwards
     background-image: radial-gradient($color-primary-light, $color-primary-dark);
     z-index: 1000;
+    // animate the background
+    // easings.net, cubic-bezier.com - sites for cubic bezier hacks
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
 
-    // delete this
-    transform: scale(80);
+    // transform: scale(80);
   }
 
   &__nav {
     height: 100vh;
-    width: 100%;
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     // should be above backgrond
     z-index: 1500;
+    // using width: 0 with opacity because the elements are invisible
+    // but still present on the page (showing the cursor)
+    opacity: 0;
+    width: 0;
+    // animate the opacity and width
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   //   this will be centered inside __nav container
@@ -48,6 +56,7 @@
     @include center-horizontal-vertical;
     list-style: none;
     text-align: center;
+    width: 100%;
   }
 
   &__item {
@@ -84,5 +93,16 @@
       color: $color-primary;
       transform: translateX(1rem);
     }
+  }
+
+  &__checkbox:checked ~ &__background {
+    // increase the size 80 times
+    transform: scale(80);
+  }
+
+  &__checkbox:checked ~ &__nav {
+    // add opacity and bring back the width to 100% when checked
+    opacity: 1;
+    width: 100%;
   }
 }
