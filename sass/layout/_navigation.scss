@@ -14,6 +14,8 @@
     // should be on top of everything
     z-index: 2000;
     box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
+    text-align: center;
+    cursor: pointer;
   }
 
   // element that spans across the whole page on button click
@@ -95,6 +97,7 @@
     }
   }
 
+  // FUNCTIONALITY
   &__checkbox:checked ~ &__background {
     // increase the size 80 times
     transform: scale(80);
@@ -104,5 +107,80 @@
     // add opacity and bring back the width to 100% when checked
     opacity: 1;
     width: 100%;
+  }
+
+  // ICON
+  &__icon {
+    position: relative;
+    margin-top: 3.5rem;
+
+    // the middle line
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 2px;
+      background-color: $color-grey-dark-3;
+      display: inline-block;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      // transition for animation on button hover
+      transition: all 0.2s;
+    }
+
+    // position of top and bottom line
+    &::before {
+      top: -0.8rem;
+      // saying where the transformation should happen -
+      // on the right side of the parent element
+      // if transform-origin is not specified, the rotation is at the center
+      // transform-origin: right;
+    }
+
+    &::after {
+      top: 0.8rem;
+    }
+  }
+
+  // for animating lines in button on hover (moving up and down)
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+
+  // FOR MAKING AN "X" WHEN CLICKED
+
+  // adjacent sibling - selecting checked state,
+  // and then with adjacent selector selecting the button
+  // and icon which is child of the button
+  &__checkbox:checked + &__button &__icon {
+    // the simplest way to make the line icon (the middle one that is not composed
+    // of pseudo elements to disappear):
+    // instead of changing the witdth to 0, set the background-color to transparent
+    // because changed width would mess pseudo selectors
+    background-color: transparent;
+  }
+
+  // rotate upper and lower line (pseudo elements) to make an "X"
+  // top: 0; is for moving pseudo elements to center (without it, they rotate
+  // related to hidden middle element
+  &__checkbox:checked + &__button &__icon::before {
+    top: 0;
+    // for nicer rotation is 135deg
+    // 180deg - 45deg
+    transform: rotate(135deg);
+  }
+
+  &__checkbox:checked + &__button &__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
   }
 }
