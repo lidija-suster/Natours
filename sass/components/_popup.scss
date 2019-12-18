@@ -1,0 +1,63 @@
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba($color-black, 0.8);
+  z-index: 9999;
+
+  &__content {
+    @include center-horizontal-vertical;
+    width: 75%;
+    background-color: $color-white;
+    box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
+    border-radius: 3px;
+    // display: table is for container to be displayed as table,
+    // and then the children will be displayed as table cells if given that poperty
+    // (left & right) and the browser will give them automatically the same height
+    display: table;
+    // without this, the image borders overlap border radius of the container
+    overflow: hidden;
+  }
+
+  // big decimal doesn't matter - it is important that these two containers occupy 100%
+  &__left {
+    width: 33.333333%;
+    display: table-cell;
+  }
+
+  &__right {
+    width: 66.6666667%;
+    display: table-cell;
+    // for centering table cell content
+    vertical-align: middle;
+    padding: 3rem 5rem;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+
+    // new property - specify how many columns to make with text
+    -moz-column-count: 2;
+    column-count: 2;
+    // space between columns
+    // default is 1em
+    -moz-column-gap: 4rem;
+    column-gap: 4rem; // 1em = 14px; (1em is the font size of the current element - 1.4rem
+    // line between columns
+    -moz-column-rule: 1px solid $color-grey-light-2;
+    column-rule: 1px solid $color-grey-light-2;
+    // automatically figure out where to place the hyphens
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+}
