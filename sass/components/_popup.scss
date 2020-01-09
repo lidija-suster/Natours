@@ -59,7 +59,7 @@
     // space between columns
     // default is 1em
     -moz-column-gap: 4rem;
-    column-gap: 4rem; // 1em = 14px; (1em is the font size of the current element - 1.4rem
+    column-gap: 4rem; // 1em = 14px; (1em is the font size of the current element - 1.4rem)
     // line between columns
     -moz-column-rule: 1px solid $color-grey-light-2;
     column-rule: 1px solid $color-grey-light-2;
@@ -70,7 +70,7 @@
     hyphens: auto;
   }
 
-  // open states of the popup (target is added by an id in html
+  // open states of the popup (target is added by an id in html)
   &:target {
     opacity: 1;
     visibility: visible;

@@ -21,6 +21,34 @@ html {
   /* font-size: 10px; */
   /* This defines what 1rem is */
   font-size: 62.5%;
+
+  // This would be written without a mixin
+  /* @media (max-width: 600px) {
+    font-size: 50%;
+  } */
+
+  // Example for @content directive
+  /*@include respond-phone {
+    // This is actually the @content passed to respond-phone mixin
+    font-size: 50%;
+  }*/
+
+  // NOTE: ORDER IS IMPORTANT IN MEDIA QUERIES - when conflicted, the last one applies
+  // and always the larger ones before the smaller ones
+
+  @include respond(tab-land) {
+    // width < 1200px?
+    font-size: 56.25%; // 1rem = 9px; 9/16 = 56.25%;
+  }
+
+  @include respond(tab-port) {
+    // width < 900px?
+    font-size: 50%; // 1rem = 8px; 8/16 = 50%;
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; // 1rem = 12px; 12/16 = 75%;
+  }
 }
 
 body {

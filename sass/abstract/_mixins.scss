@@ -12,3 +12,60 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+// MEDIA QUERY MANAGER
+
+// NOTE: em units are the best to use in media queries
+// 1em = 16px
+
+/*
+
+0 - 600px:        Phone (max-width query)
+600 - 900px:      Tablet portrait (max-width query)
+900 - 1200px:     Tablet landscape (max-width query)
+1200 - 1800px:    Is where normal styles apply
+1800px + :        Big desktop (min-width query)
+
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+*/
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 37.5em) {
+      // 600px / 16px = 37.5em
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-port {
+    @media (max-width: 56.25em) {
+      // 900px / 16px = 37.5em
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-land {
+    @media (max-width: 75em) {
+      // 1200px / 16px = 37.5em
+      @content;
+    }
+  }
+
+  @if $breakpoint == big-desktop {
+    @media (min-width: 112.5em) {
+      // 1800px / 16px = 37.5em
+      @content;
+    }
+  }
+}
+
+/* Example for @content directive
+@mixin respond-phone {
+  @media (max-width: 600px) {
+    // Sass directive used for passing a block of code into the mixin
+    @content;
+  }
+} */
