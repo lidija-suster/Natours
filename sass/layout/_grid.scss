@@ -5,6 +5,18 @@
   // add margin bottom to all row children, except on the last child
   &:not(:last-child) {
     margin-bottom: $gutter-vertical;
+
+    // add smaller vertical gutter on smaller screen sizes
+    @include respond(tab-port) {
+      margin-bottom: $gutter-vertical-small;
+    }
+  }
+
+  // change max-width of the row, so the images and other elements will
+  // not take the full width and will look more natural on small screen
+  @include respond(tab-port) {
+    max-width: 50rem;
+    padding: 0 3rem;
   }
 
   // mixin for clearing floats
@@ -19,6 +31,18 @@
     // don't add right margin to the last child of a row
     &:not(:last-child) {
       margin-right: $gutter-horizontal;
+
+      // remove bottom margin on small screen and add smaller bottom margin
+      @include respond(tab-port) {
+        margin-right: 0;
+        margin-bottom: $gutter-vertical-small;
+      }
+    }
+
+    // the best way for mobile development - to change individual columns
+    // into rows by setting them on 100% width
+    @include respond(tab-port) {
+      width: 100% !important;
     }
   }
 

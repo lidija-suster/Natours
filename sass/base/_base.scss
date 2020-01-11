@@ -35,6 +35,7 @@ html {
 
   // NOTE: ORDER IS IMPORTANT IN MEDIA QUERIES - when conflicted, the last one applies
   // and always the larger ones before the smaller ones
+  // But in mobile-first design, it is other way around (min-width queries and opposite order)
 
   @include respond(tab-land) {
     // width < 1200px?
@@ -53,4 +54,9 @@ html {
 
 body {
   box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
 }
