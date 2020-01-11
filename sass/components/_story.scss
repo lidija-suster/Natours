@@ -10,6 +10,16 @@
   // add non-rectangular shape to the story container
   transform: skewX(-12deg);
 
+  @include respond(tab-port) {
+    width: 100%;
+    padding: 4rem;
+    padding-left: 7rem;
+  }
+
+  @include respond(phone) {
+    transform: skewX(0);
+  }
+
   &__shape {
     width: 15rem;
     height: 15rem;
@@ -31,6 +41,10 @@
     transform: translateX(-3rem) skewX(12deg);
     // for enabling absolute positioning of caption
     position: relative;
+
+    @include respond(phone) {
+      transform: translateX(-3rem) skewX(0);
+    }
   }
 
   // flexible images for responsive web design always need to have a width or height
@@ -47,6 +61,10 @@
   &__text {
     // skew content inside story container in the opposite direction (shape and text)
     transform: skewX(12deg);
+
+    @include respond(phone) {
+      transform: skewX(0);
+    }
   }
 
   &__caption {
