@@ -18,7 +18,7 @@
 <body>
 
     <div class="navigation">
-        <!-- used as checkbox because we can link the input with the label, 
+        <!-- used as checkbox because we can link the input with the label,
         and label is used as button to activate the navigation -->
         <!-- when we hit the label, the checkbox becomes checked -->
         <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
@@ -345,7 +345,7 @@
                                 <div class="form__radio-group">
                                     <!-- form__radio-button in span will become radio buttons
                                         (because we can't style default buttons),
-                                        and the input will be hidden but still selected because 
+                                        and the input will be hidden but still selected because
                                         it is connected to the label via id -->
                                     <input type="radio" class="form__radio-input" id="large" name="size">
                                     <label for="large" class="form__radio-label">
@@ -368,7 +368,18 @@
 
     <footer class="footer">
         <div class="footer__logo-box">
-            <img src="img/logo-green-2x.png" alt="Full logo" class="footer__logo">
+
+            <!-- 'ART DIRECTION' -->
+            <picture class="footer__logo">
+                <!-- in media, we describe the breakpoint, in this case a breakpoint of the phone, where art direction starts;
+                srcset describes an image that shows when a breakpoint is hit -->
+                <source srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" media="(max-width: 37.5em)">
+                <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo">
+            </picture>
+
+            <!-- srcset is used for 'DENSITY DESCRIPTOR', allows the browser to choose between
+            two specified images (smaller and larger) according to the user's screen -->
+            <!-- <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo"> -->
         </div>
         <div class="row">
             <div class="col-1-of-2">
@@ -384,7 +395,7 @@
             </div>
             <div class="col-1-of-2">
                 <p class="footer__copyright">
-                    Built my <a href="#" class="footer__link">Lidija Suster</a> for her online course
+                    Built by <a href="#" class="footer__link">Lidija Suster</a> for her online course
                     <a href="#" class="footer__link">Advanced CSS and Sass</a>. Copyright &copy; by Jonas Schmedtmann.
                     You are 100% allowed to use this webpage for both personal and commercial use, but NOT to claim it
                     as your own design. A credit to the original author, Jonas Schmedtmann, is of course highly
