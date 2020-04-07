@@ -87,9 +87,38 @@
                 </div>
                 <div class="col-1-of-2">
                     <div class="composition">
-                        <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
+
+                        <!-- 'RESOLUTION SWITCHING (and density switching)' - allow the browser to choose the best image and pixel density
+                        fot the current viewport -->
+                        <!-- 300w - WIDTH DESCRIPTOR - width of the image in pixels - with it we inform the browser
+                        about the width of the images and the images doesn't need to be downloaded in order to get that information -->
+                        <!-- with sizes attribute (breakpoint and width of an image divided by 900 (the size of the breakpoint),
+                            the last parameter is the default)
+                            we inform the browser about the approximate width of an image at different viewport width;
+                        with that and width descriptor, the browser decides which image is perfect for download -->
+                        <!-- src is still used, in case of older browser -->
+                        <img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
+                        alt="Photo 1"
+                        sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                        class="composition__photo composition__photo--p1"
+                        src="img/nat-1-large.jpg">
+
+                        <img srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
+                        alt="Photo 2"
+                        sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                        class="composition__photo composition__photo--p2"
+                        src="img/nat-2-large.jpg">
+
+                        <img srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
+                        alt="Photo 3"
+                        sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                        class="composition__photo composition__photo--p3"
+                        src="img/nat-3-large.jpg">
+
+
+                        <!-- <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
                         <img src="img/nat-2-large.jpg" alt="Photo 2" class="composition__photo composition__photo--p2">
-                        <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
+                        <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3"> -->
                     </div>
 
                 </div>
@@ -374,10 +403,10 @@
                 <!-- in media, we describe the breakpoint, in this case a breakpoint of the phone, where art direction starts;
                 srcset describes an image that shows when a breakpoint is hit -->
                 <source srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" media="(max-width: 37.5em)">
-                <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo">
+                <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo" src="img/logo-green-1x.png">
             </picture>
-
-            <!-- srcset is used for 'DENSITY DESCRIPTOR', allows the browser to choose between
+            <!-- 'DENSITY SWITCHING'
+            srcset is used as 'DENSITY DESCRIPTOR' (1x or 2x), allows the browser to choose between
             two specified images (smaller and larger) according to the user's screen -->
             <!-- <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo"> -->
         </div>
