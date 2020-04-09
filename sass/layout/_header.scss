@@ -1,12 +1,23 @@
 .header {
   height: 95vh;
+  // changed image to lower resolution, which the browser will use if device resolution is smaller than 192dpi
   background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
-    url(../img/hero.jpg);
+    url(../img/hero-small.jpg);
   background-size: cover;
   background-position: top;
   position: relative;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  // media queries also can be written for device resolution, they are not limited only to viewport
+  // media queries can also combine multiple conditions
+  // if device resolution is higher than 192dpi and width is above 600px (37.5em: 600/16)
+  // or 2000px (125em: 2000/16), then use high resolution image
+  @media (min-resolution: 192dpi) and (min-width: 37.5em),
+         (min-width: 125em)  {
+    background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
+    url(../img/hero.jpg);
+  }
 
   @include respond(phone) {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
