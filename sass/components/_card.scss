@@ -20,6 +20,7 @@
     left: 0;
     width: 100%;
     // hides the back part of an element (earlier used to fix the weird animation effect)
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: $default-border-radius;
     // the image is overflowing the parent element, and round borders are not visible

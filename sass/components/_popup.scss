@@ -4,12 +4,23 @@
   position: fixed;
   top: 0;
   left: 0;
+  // if backdrop is not supported, just add dark background color as fallback
   background-color: rgba($color-black, 0.8);
   z-index: 9999;
   // initially hide the popup
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s;
+
+  // browser checks if given property and value are supported
+  @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+    // backdrop-filter blurs the background that is beneath the element
+    // it is a new feature and won't work on every browser
+    // if it is supported, apply following styles:
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba($color-black, 0.3);
+  }
 
   &__content {
     @include center-horizontal-vertical;

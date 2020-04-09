@@ -25,22 +25,31 @@
     height: 15rem;
     // float: left, in order to make the rest of the content float around it
     float: left;
-    // style for floating circle and content floating around it is shape-outside property
-    // defines how the content floats around the element
-    /* in order for this to work, the element must be floated, 
-       and the element must have defined dimensions (width and height) */
-    // 50% - radius of the circle (50% from the width),
-    // 50% 50% - center of the circle horizontally and vertically
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%);
-    // make circle
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%);
     // the best way to add space between the element that is floated is
     // the transform property, not the margins
     transform: translateX(-3rem) skewX(12deg);
     // for enabling absolute positioning of caption
     position: relative;
+    overflow: hidden;
+    // add radius to the images if webkit properties are not supported
+    border-radius: 50%;
+
+    // added all not supported properties in Safari to @supports
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      // make circle
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%);
+      // style for floating circle and content floating around it is shape-outside property
+      // defines how the content floats around the element
+      /* in order for this to work, the element must be floated,
+        and the element must have defined dimensions (width and height) */
+      // 50% - radius of the circle (50% from the width),
+      // 50% 50% - center of the circle horizontally and vertically
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      shape-outside: circle(50% at 50% 50%);
+      // remove radius from the images if webkit properties are supported
+      border-radius: none;
+    }
 
     @include respond(phone) {
       transform: translateX(-3rem) skewX(0);
