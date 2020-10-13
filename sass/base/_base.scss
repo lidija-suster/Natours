@@ -60,3 +60,9 @@ body {
     padding: 0;
   }
 }
+
+// Style selection of the text with selection pseudo element
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}

@@ -175,7 +175,12 @@
     font-weight: 100;
   }
 
-  @include respond(tab-port) {
+  /* media query copied from tab-port mixin, so the card should be displayed with the back part 
+  visible when the screen is smaller than 56.25em or if we are using device on which we can't hover 
+  (hover: none detects devices that don't have hover, like tablets, phones...) */
+  /* hover: hover is the opposite */
+  /* @include respond(tab-port) { */
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
     // height changed to auto because we no longer have two sides of the card
     height: auto;
     border-radius: $default-border-radius;
