@@ -8,7 +8,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/icon-font.css">
+    <!-- Comment this out because it is concatenated in one file -->
+    <!-- <link rel="stylesheet" href="css/icon-font.css"> -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" type="image/png" href="img/favicon.png">
 
@@ -97,23 +98,17 @@
                             we inform the browser about the approximate width of an image at different viewport width;
                         with that and width descriptor, the browser decides which image is perfect for download -->
                         <!-- src is still used, in case of older browser -->
-                        <img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
-                        alt="Photo 1"
-                        sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
-                        class="composition__photo composition__photo--p1"
-                        src="img/nat-1-large.jpg">
+                        <img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w" alt="Photo 1"
+                            sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
+                            class="composition__photo composition__photo--p1" src="img/nat-1-large.jpg">
 
-                        <img srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
-                        alt="Photo 2"
-                        sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
-                        class="composition__photo composition__photo--p2"
-                        src="img/nat-2-large.jpg">
+                        <img srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w" alt="Photo 2"
+                            sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
+                            class="composition__photo composition__photo--p2" src="img/nat-2-large.jpg">
 
-                        <img srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
-                        alt="Photo 3"
-                        sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
-                        class="composition__photo composition__photo--p3"
-                        src="img/nat-3-large.jpg">
+                        <img srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w" alt="Photo 3"
+                            sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
+                            class="composition__photo composition__photo--p3" src="img/nat-3-large.jpg">
 
 
                         <!-- <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
@@ -403,7 +398,8 @@
                 <!-- in media, we describe the breakpoint, in this case a breakpoint of the phone, where art direction starts;
                 srcset describes an image that shows when a breakpoint is hit -->
                 <source srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" media="(max-width: 37.5em)">
-                <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo" src="img/logo-green-1x.png">
+                <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo"
+                    src="img/logo-green-1x.png">
             </picture>
             <!-- 'DENSITY SWITCHING'
             srcset is used as 'DENSITY DESCRIPTOR' (1x or 2x), allows the browser to choose between
