@@ -7,4 +7,4 @@ Responsive layout is done via floats. Contains breakpoints for various screen si
 from small devices to large desktops (mixins, media queries, if/else Sass features).
 BEM (block-element-modifier) is used as naming convention.
 NPM is used to compile and build the code.
-Full design credits goes to Jonas Scmedtmann ("Advanced CSS and Sass: Flexbox, Grid, Animations and more" course on Udemy).
+Full design credits goes to Jonas Schmedtmann ("Advanced CSS and Sass: Flexbox, Grid, Animations and more" course on Udemy).
